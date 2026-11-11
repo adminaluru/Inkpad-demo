@@ -1,0 +1,22 @@
+services:
+  - type: web
+    name: inkpad
+    runtime: node
+    plan: starter
+    buildCommand: npm ci --include=dev && npm run build
+    startCommand: npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: NODE_VERSION
+        value: "22"
+      - key: DATA_DIR
+        value: /var/data
+    # The SQLite file lives on this disk so documents survive restarts and
+    # deploys. Disks need a paid plan; see "Deployment" in the README for
+    # what changes on the free plan.
+    disk:
+      name: inkpad-data
+      mountPath: /var/data
+      sizeGB: 1
