@@ -117,18 +117,8 @@ should know about:
   session everything persists normally: refresh, sign out and back in, switch
   users.
 
-To keep data across restarts, change `plan` to `starter`, add a disk, and set
-`DATA_DIR` to its mount path:
-
-```yaml
-    envVars:
-      - key: DATA_DIR
-        value: /var/data
-    disk:
-      name: inkpad-data
-      mountPath: /var/data
-      sizeGB: 1
-```
+On any host with persistent storage, point `DATA_DIR` at that storage and the
+database survives restarts.
 
 Running locally has neither limitation; the database is a file in
 `server/data`.
