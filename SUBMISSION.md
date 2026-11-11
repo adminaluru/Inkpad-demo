@@ -12,7 +12,11 @@
 
 ## Live product
 
-URL: _add after deploying_
+URL: https://inkpad-x46a.onrender.com
+
+It runs on a free instance, so the first load after a quiet period can take up
+to a minute, and data resets to the seeded demo content when the instance
+restarts. Everything persists normally within a running session.
 
 ## Test accounts
 

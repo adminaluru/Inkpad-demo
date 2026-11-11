@@ -3,7 +3,11 @@
 A small document editor: write rich text in the browser, import files as new
 documents, and share them with other users as view-only or editable.
 
-**Live URL:** _add after deploying_
+**Live URL:** https://inkpad-x46a.onrender.com
+
+The demo runs on a free instance. If it has been idle, the first page load can
+take up to a minute, and its data resets to the seeded demo content (see
+[Deployment](#deployment)).
 
 ## Demo accounts
 
