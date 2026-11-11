@@ -2,7 +2,7 @@ services:
   - type: web
     name: inkpad
     runtime: node
-    plan: starter
+    plan: free
     buildCommand: npm ci --include=dev && npm run build
     startCommand: npm start
     healthCheckPath: /api/health
@@ -11,12 +11,7 @@ services:
         value: production
       - key: NODE_VERSION
         value: "22"
-      - key: DATA_DIR
-        value: /var/data
-    # The SQLite file lives on this disk so documents survive restarts and
-    # deploys. Disks need a paid plan; see "Deployment" in the README for
-    # what changes on the free plan.
-    disk:
-      name: inkpad-data
-      mountPath: /var/data
-      sizeGB: 1
+    # The free plan has no persistent disk, so the SQLite file is recreated
+    # (with the demo accounts) when the instance restarts. To keep data, move
+    # to a paid plan, add a disk, and point DATA_DIR at its mount path. See
+    # "Deployment" in the README.

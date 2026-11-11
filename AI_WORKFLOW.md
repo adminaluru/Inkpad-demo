@@ -37,8 +37,9 @@ other AI tools were used.
   are easy to ask an AI tool for and expensive to get right. They are listed
   as limitations instead of being half-built.
 - **Rejected: hiding the limits of the free hosting tier.** The deployment
-  section says plainly that SQLite on a host without a persistent disk resets
-  on restart, rather than leaving reviewers to discover it.
+  section says plainly that the live demo runs on a free instance with no
+  persistent disk, so its data resets on restart, rather than leaving
+  reviewers to discover it.
 
 ## How correctness, UX and reliability were verified
 

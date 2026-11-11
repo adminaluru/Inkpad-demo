@@ -102,11 +102,32 @@ so it runs anywhere that can run `npm start`.
 2. In Render choose **New → Blueprint** and select the repository.
 3. Render reads `render.yaml`, builds, and gives you the URL.
 
-The blueprint attaches a 1 GB disk for the SQLite file, which needs a paid
-instance. On the free plan, remove the `disk` block and the `DATA_DIR`
-variable and change `plan` to `free`. The app works the same, but the database
-is recreated (with the demo accounts and welcome document) whenever the
-instance restarts, which on the free plan includes waking up after idling.
+The blueprint uses Render's free plan, which has two consequences reviewers
+should know about:
+
+- **The first request after a quiet period is slow.** Free instances sleep
+  after about 15 minutes without traffic and take up to a minute to wake.
+- **Data does not survive a restart.** There is no persistent disk on the free
+  plan, so the SQLite file is recreated with the demo accounts and the welcome
+  document each time the instance wakes or redeploys. Within a running
+  session everything persists normally: refresh, sign out and back in, switch
+  users.
+
+To keep data across restarts, change `plan` to `starter`, add a disk, and set
+`DATA_DIR` to its mount path:
+
+```yaml
+    envVars:
+      - key: DATA_DIR
+        value: /var/data
+    disk:
+      name: inkpad-data
+      mountPath: /var/data
+      sizeGB: 1
+```
+
+Running locally has neither limitation; the database is a file in
+`server/data`.
 
 ## Known limitations
 
